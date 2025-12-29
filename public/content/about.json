@@ -1,0 +1,25 @@
+{
+    "name": "Darren Giles",
+    "designation": "Product Manager",
+    "company": {
+        "name": "Unemployed",
+        "url": "TBD"
+    },
+    "tag": "Product | Design | Cloud",
+    "description" : "I'm a Product Manager with 4+ years at Microsoft delivering cloud-native solutions from concept to launch. Adept at turning complex customer signals into intuitive, scalable products that improve usability, accelerate adoption, and lower costs. I'm using this website as an opportunity to practice web development and build my understanding of the modern internet, distributed systems, and AI-driven software engineering. Thanks for visiting!",
+    "socialLinks": [
+        {
+            "name": "linkedin",
+            "url": "https://www.linkedin/in/darrenjbgiles"
+        },{
+            "name": "github",
+            "url": "TBD"
+        },{
+            "name": "instagram",
+            "url": "TBD"
+        },{
+            "name": "email",
+            "url": "darrengiles10@gmail.com"
+        }
+    ]
+}

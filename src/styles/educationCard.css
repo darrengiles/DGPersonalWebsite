@@ -1,0 +1,82 @@
+/* --- CARD WRAPPER --- */
+.education-card {
+  display: grid;
+  grid-template-columns: 80px 1fr;   /* left = logo, right = content */
+  gap: 1.2rem;
+  align-items: start;
+  background-color: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 1.5rem;
+  color: #333333;
+  transition: box-shadow 0.2s ease;
+}
+
+.education-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* --- LINK --- */
+.card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* --- LEFT COLUMN (LOGO) --- */
+.school-logo {
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  display: block;
+  margin-top: 0.25rem;
+  border-radius: 6px;
+}
+
+/* --- RIGHT COLUMN (TEXT & DETAILS) --- */
+.card-content {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.school-name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #111827;
+  margin: 0;
+}
+
+.degree,
+.location {
+  margin: 0.2rem 0;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.description {
+  margin-top: 0.8rem;
+  line-height: 1.5;
+  font-size: 0.95rem;
+  color: #374151;
+  text-align: justify;
+}
+
+/* --- ACTIVITIES / TAGS --- */
+.activities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.activity-tag {
+  background-color: #f3f4f6;
+  color: #374151;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-style: italic;
+}
