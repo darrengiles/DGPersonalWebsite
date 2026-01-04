@@ -6,6 +6,7 @@ import EducationSection from "./data/educationSection";
 import ExperienceCard from "./cards/experienceCard";
 import ExperienceSection from "./data/experienceSection";
 import Navigation from "./cards/navigation";
+import ThemeToggle from "./components/ThemeToggle";
 
 import Resume from "./pages/resume";
 import Contact from "./pages/contact"
@@ -30,6 +31,7 @@ function App() {
   
   return (
     <>
+    <ThemeToggle />
     <Navigation aboutLoaded={!!about}/>
     <Routes>
       <Route path="/" element={<Resume about={about}/>}/>
