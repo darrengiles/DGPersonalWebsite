@@ -100,7 +100,9 @@
 /* === RESPONSIVE === */
 @media (max-width: 700px) {
   /* Restyle navbar on mobile - just a container for the button */
-  .navbar {
+  .navbar,
+  .navbar.shrunk,
+  .navbar.scrolled {
     position: fixed;
     top: 1rem;
     right: 4.5rem;
@@ -177,8 +179,12 @@
     text-align: center;
     color: var(--text-primary);
 
-    border-radius: 8px;
-    transition: background-color 0.2s ease, color 0.2s ease;
+    border-bottom: 1px solid var(--border);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .menu-list.open .nav-link:last-child {
+    border-bottom: none;
   }
 
   .menu-list.open .nav-link:hover {
