@@ -1,5 +1,4 @@
-// src/pages/Resume.jsx
-import Navigation from "../cards/navigation";
+
 import EducationSection from "../data/educationSection";
 import ExperienceSection from "../data/experienceSection";
 
@@ -11,8 +10,6 @@ function Resume({ about }) {
     <div className="app">
       <header>
         {/* Navbar */}
-        
-
         {/* Hero */}
         <section className="hero">
           <h1 className="hero-name">{about.name}</h1>
@@ -28,13 +25,6 @@ function Resume({ about }) {
 
         <EducationSection />
         <ExperienceSection />
-
-        <footer className="footer">
-          <p>
-            © 2025 {about.name} |{" "}
-            <a href="mailto:darrengiles10@example.com">Contact Me</a>
-          </p>
-        </footer>
       </main>
     </div>
   );

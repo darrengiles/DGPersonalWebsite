@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import EducationCard from "./cards/educationCard";
-import EducationSection from "./data/educationSection";
-import ExperienceCard from "./cards/experienceCard";
-import ExperienceSection from "./data/experienceSection";
-import Navigation from "./cards/navigation";
+import Navigation from "./components/Navigation";
 import ThemeToggle from "./components/ThemeToggle";
+import Footer from "./components/Footer";
 
 import Resume from "./pages/resume";
 import Contact from "./pages/contact"
@@ -38,6 +35,7 @@ function App() {
       <Route path="/playground" element={<Playground />}/>
       <Route path="/contact" element={<Contact />} />
     </Routes>
+    <Footer />
     </>
 
 

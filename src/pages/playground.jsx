@@ -1,4 +1,3 @@
-import Navigation from "../cards/navigation";
 import "../styles/styles.css";
 
 function Playground() {
