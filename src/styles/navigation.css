@@ -192,13 +192,18 @@
     color: var(--accent);
   }
 
-  /* Show all links in mobile menu (override collapse) */
+  /* Show collapse links only on home page */
   .menu-list.open .nav-collapse {
     display: block;
     max-width: none;
     opacity: 1;
     margin: 0;
     pointer-events: auto;
+  }
+
+  /* Hide collapse links when not on home (same as desktop) */
+  .menu-list.open .nav-collapse.is-collapsed {
+    display: none;
   }
 
   /* Dark overlay behind everything */
