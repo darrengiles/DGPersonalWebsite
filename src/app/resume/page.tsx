@@ -1,16 +1,14 @@
+import type { About } from '@/types';
+import aboutData from '@/../public/content/about.json';
+import EducationSection from '@/components/sections/EducationSection';
+import ExperienceSection from '@/components/sections/ExperienceSection';
 
-import EducationSection from "../data/educationSection";
-import ExperienceSection from "../data/experienceSection";
-
-function Resume({ about }) {
-  // Safety check
-  if (!about) return <p>Loading...</p>;
+export default function Resume() {
+  const about = aboutData as About;
 
   return (
     <div className="app">
       <header>
-        {/* Navbar */}
-        {/* Hero */}
         <section className="hero">
           <h1 className="hero-name">{about.name}</h1>
           <p className="hero-tag">{about.tag}</p>
@@ -29,5 +27,3 @@ function Resume({ about }) {
     </div>
   );
 }
-
-export default Resume;

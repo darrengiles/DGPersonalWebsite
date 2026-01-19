@@ -1,8 +1,10 @@
-import React from 'react';
-import { useTheme } from '../context/ThemeContext';
-import './ThemeToggle.css';
+'use client';
 
-function ThemeToggle() {
+import React from 'react';
+import { useTheme } from '@/context/ThemeContext';
+import '@/styles/ThemeToggle.css';
+
+export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
@@ -32,5 +34,3 @@ function ThemeToggle() {
     </button>
   );
 }
-
-export default ThemeToggle;

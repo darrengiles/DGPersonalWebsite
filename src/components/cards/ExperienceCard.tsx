@@ -1,7 +1,13 @@
-import React from "react";
-import "../styles/experienceCard.css";
+import React from 'react';
+import Image from 'next/image';
+import type { Experience } from '@/types';
+import '@/styles/experienceCard.css';
 
-function ExperienceCard({ experience }) {
+interface ExperienceCardProps {
+  experience: Experience;
+}
+
+export default function ExperienceCard({ experience }: ExperienceCardProps) {
   const {
     role,
     company,
@@ -15,32 +21,29 @@ function ExperienceCard({ experience }) {
 
   return (
     <div className="experience-card">
-      {/* --- Left column: logo --- */}
       {logo && (
-        <img
+        <Image
           src={logo}
           alt={`${company} logo`}
+          width={60}
+          height={60}
           className="company-logo"
         />
       )}
 
-      {/* --- Right column: all content --- */}
       <div className="card-content">
         <a href={link} target="_blank" rel="noreferrer" className="card-link">
-          {/* Title + company */}
           <h3 className="role-title">{role}</h3>
           <p className="company">
             {company}
             {organization && ` · ${organization}`}
           </p>
 
-          {/* location + years */}
           <div className="meta">
             <p className="years">{years}</p>
             <p className="location">{location}</p>
           </div>
 
-          {/* bullet points */}
           <ul className="points">
             {points.map((point, i) => (
               <li key={i}>{point}</li>
@@ -51,5 +54,3 @@ function ExperienceCard({ experience }) {
     </div>
   );
 }
-
-export default ExperienceCard;
