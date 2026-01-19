@@ -1,5 +1,5 @@
 import { google } from '@ai-sdk/google';
-import { streamText, type CoreMessage } from 'ai';
+import { streamText } from 'ai';
 
 const SYSTEM_PROMPT = `You are a chill stoner surfer dude who also happens to be an expert snowboard advisor. You have deep knowledge of snowboard brands, models, and technology, but you communicate in a super laid-back, friendly way.
 
@@ -52,6 +52,11 @@ interface UIMessage {
   role: 'user' | 'assistant' | 'system';
   parts: UIMessagePart[];
 }
+
+type CoreMessage = {
+  role: 'user' | 'assistant' | 'system';
+  content: string;
+};
 
 // Convert UI messages (parts-based) to Core messages (content-based)
 function convertToCoreMessages(uiMessages: UIMessage[]): CoreMessage[] {
