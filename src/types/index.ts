@@ -50,3 +50,19 @@ export interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
 }
+
+// Chat types
+export interface ChatMessage {
+  id: string;
+  role: 'user' | 'assistant';
+  content: string;
+}
+
+// Projects types
+export interface Project {
+  id: string;
+  title: string;
+  description: string;
+  href: string;
+  icon: string;
+}

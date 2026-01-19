@@ -93,8 +93,8 @@ export default function Navigation({ aboutLoaded = true }: NavigationProps) {
             Contact
           </Link>
 
-          <Link className="nav-link" href="/playground" onClick={() => setIsOpen(false)}>
-            Playground
+          <Link className="nav-link" href="/projects" onClick={() => setIsOpen(false)}>
+            Projects
           </Link>
         </div>
       </nav>
