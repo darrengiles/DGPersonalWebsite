@@ -25,8 +25,7 @@ export default function SnowboardRecommenderPage() {
   const [input, setInput] = useState('');
   const messagesContainerRef = useRef<HTMLDivElement>(null);
 
-  const { messages, sendMessage, status } = useChat({
-    messages: [INITIAL_MESSAGE],
+  const { messages, sendMessage, status, setMessages } = useChat({
     onFinish: () => {
       if (questionCount < MAX_QUESTIONS) {
         setQuestionCount((prev) => prev + 1);
@@ -35,6 +34,14 @@ export default function SnowboardRecommenderPage() {
   });
 
   const isLoading = status === 'streaming' || status === 'submitted';
+
+  // Initial greeting with delay
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setMessages([INITIAL_MESSAGE]);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [setMessages]);
 
   // Scroll within the messages container only, not the page
   useEffect(() => {
