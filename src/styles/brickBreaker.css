@@ -1,0 +1,54 @@
+/* === BRICK BREAKER EASTER EGG === */
+
+.brick-breaker-container {
+  position: relative;
+}
+
+/* Word spans injected into the paragraph — invisible until destroyed */
+.game-word {
+  transition: opacity 200ms ease-out;
+}
+
+/* Overlay for ball + particles (floats over content, doesn't block interaction) */
+.game-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* Ball */
+.game-ball {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 12px var(--accent), 0 0 4px var(--accent);
+  pointer-events: none;
+  will-change: transform;
+  z-index: 12;
+}
+
+/* Paddle glow during starting phase */
+.game-paddle-glow {
+  animation: paddleGlow 400ms ease-in-out infinite alternate;
+}
+
+@keyframes paddleGlow {
+  from {
+    text-shadow: 0 0 8px var(--accent);
+  }
+  to {
+    text-shadow: 0 0 24px var(--accent), 0 0 48px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+}
+
+/* Particles */
+.game-particle {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform, opacity;
+  z-index: 13;
+}
