@@ -1,6 +1,7 @@
 'use client';
 
 import type { UIMessage } from '@ai-sdk/react';
+import styles from '@/styles/chat.module.css';
 
 interface ChatMessageProps {
   message: UIMessage;
@@ -25,7 +26,7 @@ function parseLinks(text: string): React.ReactNode[] {
         href={match[2]}
         target="_blank"
         rel="noopener noreferrer"
-        className="chat-link"
+        className={styles['chat-link']}
       >
         {match[1]}
       </a>
@@ -52,17 +53,17 @@ function MessageBubble({
   showAvatar: boolean;
 }) {
   return (
-    <div className={`chat-message ${isUser ? 'user' : 'assistant'}`}>
-      <div className="message-avatar">
+    <div className={`${styles['chat-message']} ${isUser ? styles['user'] : styles['assistant']}`}>
+      <div className={styles['message-avatar']}>
         {showAvatar ? (isUser ? '👤' : '🏂') : ''}
       </div>
-      <div className="message-content">
+      <div className={styles['message-content']}>
         {showAvatar && (
-          <div className="message-role">
+          <div className={styles['message-role']}>
             {isUser ? 'You' : 'Snowboard Advisor'}
           </div>
         )}
-        <div className="message-text">
+        <div className={styles['message-text']}>
           {parseLinks(text.trim())}
         </div>
       </div>

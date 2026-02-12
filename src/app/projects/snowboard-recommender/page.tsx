@@ -5,7 +5,7 @@ import { useState, useRef, useEffect, FormEvent } from 'react';
 import Link from 'next/link';
 import ChatMessage from '@/components/chat/ChatMessage';
 import ChatInput from '@/components/chat/ChatInput';
-import '@/styles/chat.css';
+import styles from '@/styles/chat.module.css';
 
 const MAX_QUESTIONS = 5;
 
@@ -68,28 +68,28 @@ export default function SnowboardRecommenderPage() {
     <>
       <header className="hero"></header>
       <main className="page-container">
-        <Link href="/projects" className="chat-back-link">
+        <Link href="/projects" className={styles['chat-back-link']}>
           ← Back to Projects
         </Link>
 
-        <div className="chat-container terminal-theme">
-          <div className="chat-header">
-            <h1 className="chat-title">🏂 Snowboard Recommender</h1>
-            <span className="question-counter">
+        <div className={`${styles['chat-container']} ${styles['terminal-theme']}`}>
+          <div className={styles['chat-header']}>
+            <h1 className={styles['chat-title']}>🏂 Snowboard Recommender</h1>
+            <span className={styles['question-counter']}>
               {questionCount <= MAX_QUESTIONS
                 ? `Question ${questionCount}/${MAX_QUESTIONS}`
                 : 'Recommendation ready'}
             </span>
           </div>
 
-          <div className="chat-messages" ref={messagesContainerRef}>
+          <div className={styles['chat-messages']} ref={messagesContainerRef}>
             {messages.map((message) => (
               <ChatMessage key={message.id} message={message} />
             ))}
 
             {isLoading && (
-              <div className="chat-loading">
-                <div className="loading-dots">
+              <div className={styles['chat-loading']}>
+                <div className={styles['loading-dots']}>
                   <span></span>
                   <span></span>
                   <span></span>
@@ -99,7 +99,7 @@ export default function SnowboardRecommenderPage() {
             )}
           </div>
 
-          <div className="chat-input-container">
+          <div className={styles['chat-input-container']}>
             <ChatInput
               value={input}
               onChange={setInput}

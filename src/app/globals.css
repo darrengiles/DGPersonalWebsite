@@ -150,3 +150,62 @@ section {
     font-size: 2rem;
   }
 }
+
+/* === SHARED KEYFRAMES === */
+
+/* Card entrance animation (education + experience cards) */
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pixel wave animation */
+@keyframes wave {
+  0%, 100% {
+    height: 20%;
+  }
+  50% {
+    height: 90%;
+  }
+}
+
+/* Navigation mobile menu animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Game paddle glow (cross-component — applied to #education by BrickBreakerGame) */
+.game-paddle-glow {
+  animation: paddleGlow 400ms ease-in-out infinite alternate;
+}
+
+@keyframes paddleGlow {
+  from {
+    text-shadow: 0 0 8px var(--accent);
+  }
+  to {
+    text-shadow: 0 0 24px var(--accent), 0 0 48px color-mix(in srgb, var(--accent) 40%, transparent);
+  }
+}

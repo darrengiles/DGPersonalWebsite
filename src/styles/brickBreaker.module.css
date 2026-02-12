@@ -30,20 +30,6 @@
   z-index: 12;
 }
 
-/* Paddle glow during starting phase */
-.game-paddle-glow {
-  animation: paddleGlow 400ms ease-in-out infinite alternate;
-}
-
-@keyframes paddleGlow {
-  from {
-    text-shadow: 0 0 8px var(--accent);
-  }
-  to {
-    text-shadow: 0 0 24px var(--accent), 0 0 48px color-mix(in srgb, var(--accent) 40%, transparent);
-  }
-}
-
 /* Particles */
 .game-particle {
   position: absolute;

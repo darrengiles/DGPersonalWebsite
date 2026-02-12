@@ -4,7 +4,7 @@ import { useEffect, useState, useRef, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import type { Brick, Phase, Rect } from './types';
 import { useGameLoop } from './useGameLoop';
-import '@/styles/brickBreaker.css';
+import styles from '@/styles/brickBreaker.module.css';
 
 const PARTICLE_POOL_SIZE = 150;
 
@@ -63,7 +63,7 @@ export default function BrickBreakerGame({
     // Split text content into words, wrap each in a span
     const words = description.split(/\s+/).filter(Boolean);
     aboutP.innerHTML = words
-      .map((w, i) => `<span class="game-word" data-brick="${i}">${w}</span>`)
+      .map((w, i) => `<span class="${styles['game-word']}" data-brick="${i}">${w}</span>`)
       .join(' ');
 
     const bricks: Brick[] = [];
@@ -417,17 +417,17 @@ export default function BrickBreakerGame({
   const showOverlay = phase === 'playing' || phase === 'ending';
 
   return (
-    <div ref={containerRef} className="brick-breaker-container">
+    <div ref={containerRef} className={styles['brick-breaker-container']}>
       {/* Normal resume content — always visible */}
       {children}
 
       {/* Game overlay — always mounted so refs are stable; hidden when inactive */}
       <div
         ref={overlayRef}
-        className="game-overlay"
+        className={styles['game-overlay']}
         style={showOverlay ? undefined : { display: 'none' }}
       >
-        <div ref={ballRef} className="game-ball" />
+        <div ref={ballRef} className={styles['game-ball']} />
 
         {Array.from({ length: PARTICLE_POOL_SIZE }, (_, i) => (
           <div
@@ -435,7 +435,7 @@ export default function BrickBreakerGame({
             ref={(el) => {
               if (el) particlePoolRef.current[i] = el;
             }}
-            className="game-particle"
+            className={styles['game-particle']}
             style={{ display: 'none' }}
           />
         ))}

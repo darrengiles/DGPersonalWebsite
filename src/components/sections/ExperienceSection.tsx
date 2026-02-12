@@ -7,7 +7,7 @@ export default function ExperienceSection() {
     <div>
       <h2 id="experience">Experience</h2>
       {experienceData.map((exp, index) => (
-        <ExperienceCard key={index} experience={exp} />
+        <ExperienceCard key={index} experience={exp} index={index} />
       ))}
     </div>
   );

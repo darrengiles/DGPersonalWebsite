@@ -2,24 +2,23 @@
 
 import React from 'react';
 import { useTheme } from '@/context/ThemeContext';
-import '@/styles/ThemeToggle.css';
 
 export default function ThemeToggle() {
   const { theme, toggleTheme } = useTheme();
 
   return (
     <button
-      className="theme-toggle"
+      className="fixed top-6 right-6 z-[1001] size-[57px] rounded-full border-none cursor-pointer flex items-center justify-center bg-[var(--toggle-bg)] text-[var(--toggle-color)] shadow-[0_2px_10px_var(--toggle-shadow)] transition-[background-color,color,transform,box-shadow] duration-300 ease-in-out hover:scale-110 hover:shadow-[0_4px_15px_var(--toggle-shadow)] active:scale-95 max-[700px]:size-[49px] max-[700px]:top-4 max-[700px]:right-4"
       onClick={toggleTheme}
       aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
       title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
     >
       {theme === 'light' ? (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="max-[700px]:size-6">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
         </svg>
       ) : (
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="max-[700px]:size-6">
           <circle cx="12" cy="12" r="5" />
           <line x1="12" y1="1" x2="12" y2="3" />
           <line x1="12" y1="21" x2="12" y2="23" />

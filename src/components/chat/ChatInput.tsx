@@ -1,6 +1,7 @@
 'use client';
 
 import { FormEvent, KeyboardEvent } from 'react';
+import styles from '@/styles/chat.module.css';
 
 interface ChatInputProps {
   value: string;
@@ -27,9 +28,9 @@ export default function ChatInput({
   };
 
   return (
-    <form className="chat-input-form" onSubmit={onSubmit}>
+    <form className={styles['chat-input-form']} onSubmit={onSubmit}>
       <textarea
-        className="chat-input"
+        className={styles['chat-input']}
         value={value}
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={handleKeyDown}
@@ -39,7 +40,7 @@ export default function ChatInput({
       />
       <button
         type="submit"
-        className="chat-send-button"
+        className={styles['chat-send-button']}
         disabled={!value.trim() || isLoading || disabled}
       >
         {isLoading ? '...' : 'Send'}
