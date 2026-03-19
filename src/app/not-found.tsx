@@ -1,5 +1,3 @@
-import Link from 'next/link';
-
 export default function NotFound() {
   return (
     <>
@@ -11,12 +9,12 @@ export default function NotFound() {
           <p className="text-[var(--text-muted)] text-lg mb-8 max-w-md">
             The page you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
-          <Link
+          <a
             href="/"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] text-white font-medium no-underline transition-[background-color,transform] duration-200 ease-in-out hover:bg-[var(--accent-hover)] hover:scale-105 active:scale-95"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent)] !text-white font-medium no-underline transition-[background-color,transform] duration-200 ease-in-out hover:bg-[var(--accent-hover)] hover:scale-105 active:scale-95"
           >
             Go Home
-          </Link>
+          </a>
         </div>
       </main>
     </>

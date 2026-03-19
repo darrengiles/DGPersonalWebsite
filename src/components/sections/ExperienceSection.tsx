@@ -4,7 +4,7 @@ import { experienceData } from '@/data/experience';
 
 export default function ExperienceSection() {
   return (
-    <div>
+    <div className="mb-16">
       <h2 id="experience">Experience</h2>
       {experienceData.map((exp, index) => (
         <ExperienceCard key={index} experience={exp} index={index} />

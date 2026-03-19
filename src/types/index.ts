@@ -43,14 +43,6 @@ export interface Experience {
   link: string;
 }
 
-// Theme system
-export type Theme = 'light' | 'dark';
-
-export interface ThemeContextType {
-  theme: Theme;
-  toggleTheme: () => void;
-}
-
 // Chat types
 export interface ChatMessage {
   id: string;

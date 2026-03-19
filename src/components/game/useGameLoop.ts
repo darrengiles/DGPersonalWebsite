@@ -2,7 +2,8 @@ import { useRef, useCallback } from 'react';
 import type { Ball, Brick, Paddle, ParticleData, Rect } from './types';
 import { spawnParticles, spawnCelebration, updateParticles } from './particles';
 
-const BALL_SPEED = 7; // px per frame at 60fps
+const BALL_SPEED_MIN = 3; // px per frame at 60fps – starting speed
+const BALL_SPEED_MAX = 9; // px per frame at 60fps – max speed at top row
 const BALL_RADIUS = 8;
 
 interface GameRefs {
@@ -14,6 +15,9 @@ interface GameRefs {
   mouseX: number;
   paused: boolean;
   gameEnded: boolean;
+  highestRow: number;
+  rowCount: number;
+  brickRowMap: Map<number, number>;
 }
 
 interface DomRefs {
@@ -38,6 +42,9 @@ export function useGameLoop() {
     mouseX: 0,
     paused: false,
     gameEnded: false,
+    highestRow: -1,
+    rowCount: 0,
+    brickRowMap: new Map(),
   });
 
   const domRef = useRef<DomRefs>({
@@ -202,6 +209,20 @@ export function useGameLoop() {
           brickEl.style.opacity = '0';
         }
 
+        // Progressive speed: increase when reaching a new highest row
+        const hitRow = game.brickRowMap.get(brick.id) ?? 0;
+        if (hitRow > game.highestRow) {
+          game.highestRow = hitRow;
+          const targetSpeed =
+            BALL_SPEED_MIN +
+            (hitRow / Math.max(game.rowCount - 1, 1)) *
+              (BALL_SPEED_MAX - BALL_SPEED_MIN);
+          const currentSpeed = Math.sqrt(ball.vx * ball.vx + ball.vy * ball.vy);
+          const scale = targetSpeed / currentSpeed;
+          ball.vx *= scale;
+          ball.vy *= scale;
+        }
+
         callbacksRef.current.onBrickDestroyed(brick);
 
         // Check win condition
@@ -271,6 +292,26 @@ export function useGameLoop() {
       game.particles = [];
       game.paused = false;
       game.gameEnded = false;
+
+      // Compute brick row mapping for progressive speed
+      const uniqueYs: number[] = [];
+      for (const b of bricks) {
+        const cy = b.rect.y + b.rect.height / 2;
+        if (!uniqueYs.some((y) => Math.abs(y - cy) < 2)) {
+          uniqueYs.push(cy);
+        }
+      }
+      // Sort descending: largest Y (closest to paddle) = row 0
+      uniqueYs.sort((a, b) => b - a);
+      const rowMap = new Map<number, number>();
+      for (const b of bricks) {
+        const cy = b.rect.y + b.rect.height / 2;
+        const rowIndex = uniqueYs.findIndex((y) => Math.abs(y - cy) < 2);
+        rowMap.set(b.id, rowIndex);
+      }
+      game.rowCount = uniqueYs.length;
+      game.brickRowMap = rowMap;
+      game.highestRow = -1;
       callbacksRef.current = callbacks;
       lastTime.current = 0;
       rafId.current = requestAnimationFrame(tick);
@@ -289,8 +330,8 @@ export function useGameLoop() {
       ball.launched = true;
       // Launch upward with slight random horizontal bias
       const angle = (Math.PI / 2) + (Math.random() - 0.5) * 0.6;
-      ball.vx = Math.cos(angle) * BALL_SPEED;
-      ball.vy = -Math.sin(angle) * BALL_SPEED;
+      ball.vx = Math.cos(angle) * BALL_SPEED_MIN;
+      ball.vy = -Math.sin(angle) * BALL_SPEED_MIN;
     }
   }, []);
 

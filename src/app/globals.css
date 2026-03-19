@@ -4,9 +4,6 @@
 :root {
   --bg-primary: #f9fafb;
   --bg-secondary: #ffffff;
-  --bg-navbar: rgba(255, 255, 255, 0.8);
-  --bg-navbar-scrolled: rgba(255, 255, 255, 0.95);
-
   --text-primary: #333333;
   --text-secondary: #374151;
   --text-muted: #6b7280;
@@ -21,18 +18,12 @@
 
   --tag-bg: #f3f4f6;
   --tag-text: #374151;
-
-  --toggle-bg: #ffffff;
-  --toggle-color: #374151;
-  --toggle-shadow: rgba(0, 0, 0, 0.1);
+  --nav-text: #000000;
 }
 
 [data-theme="dark"] {
   --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
-  --bg-navbar: rgba(30, 41, 59, 0.9);
-  --bg-navbar-scrolled: rgba(30, 41, 59, 0.95);
-
   --text-primary: #e2e8f0;
   --text-secondary: #cbd5e1;
   --text-muted: #94a3b8;
@@ -47,10 +38,7 @@
 
   --tag-bg: #334155;
   --tag-text: #cbd5e1;
-
-  --toggle-bg: #1e293b;
-  --toggle-color: #f1f5f9;
-  --toggle-shadow: rgba(0, 0, 0, 0.3);
+  --nav-text: #e2e8f0;
 }
 
 html {
@@ -70,15 +58,9 @@ body {
   flex-direction: column;
 }
 
-/* Ensure content sits above the background waves */
-main, footer {
-  position: relative;
-  z-index: 1;
-}
-
-/* Push footer to bottom */
 main {
   flex: 1;
+  padding-bottom: 120px;
 }
 
 code {
@@ -162,16 +144,6 @@ section {
   to {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-
-/* Pixel wave animation */
-@keyframes wave {
-  0%, 100% {
-    height: 20%;
-  }
-  50% {
-    height: 90%;
   }
 }
 
